@@ -9,22 +9,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+require('rxjs/Rx');
+var phrase_service_1 = require('../services/phrase-service');
 var HangmanCmp = (function () {
-    function HangmanCmp() {
+    function HangmanCmp(_phraseService) {
+        this._phraseService = _phraseService;
         this.title = "Hangman";
-        this.phrase = '';
+        this.getPhrase();
     }
     HangmanCmp.prototype.ngOnInit = function () {
+        this.getPhrase();
         console.log('init');
+    };
+    HangmanCmp.prototype.getPhrase = function () {
+        var _this = this;
+        this._phraseService
+            .getRandom()
+            .then(function (phrase) {
+            return _this.phrase = phrase;
+        }, function (error) { return console.log(error); });
     };
     HangmanCmp = __decorate([
         core_1.Component({
             selector: 'hangman-cmp',
             templateUrl: 'hangman/templates/hangman.html',
-            styleUrls: ['hangman/styles/hangman.css']
+            styleUrls: ['hangman/styles/hangman.css'],
+            providers: [phrase_service_1.PhraseService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [phrase_service_1.PhraseService])
     ], HangmanCmp);
     return HangmanCmp;
 }());
 exports.HangmanCmp = HangmanCmp;
+//# sourceMappingURL=hangman-cmp.js.map
