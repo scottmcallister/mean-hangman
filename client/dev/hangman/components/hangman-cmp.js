@@ -14,7 +14,7 @@ var phrase_service_1 = require('../services/phrase-service');
 var HangmanCmp = (function () {
     function HangmanCmp(_phraseService) {
         this._phraseService = _phraseService;
-        this.title = "Hangman";
+        this.title = "Hangman Game";
         this.getPhrase();
     }
     HangmanCmp.prototype.ngOnInit = function () {

@@ -5,13 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <link rel="shortcut icon" type="image/ico" href="favicon.png" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-
+    <link href='https://fonts.googleapis.com/css?family=Gudea:400,700' rel='stylesheet' type='text/css'>
+    <link href="/hangman/styles/hangman.css" rel="stylesheet" type="text/css">
     <title>Hangman</title>
   </head>
   <body>
 
-    <hangman-cmp>Loading...</hangman-cmp>
+    <hangman-cmp>
+      <div class="wrapper">
+      	<div class="cssload-loader"></div>
+      </div>
+    </hangman-cmp>
 
 
     <script src="./systemjs/dist/system.js?rev=@@hash"></script>

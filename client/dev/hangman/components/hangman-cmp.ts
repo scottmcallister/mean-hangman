@@ -2,7 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import 'rxjs/Rx' 
+import 'rxjs/Rx'
 import { PhraseService } from '../services/phrase-service';
 
 @Component({
@@ -12,11 +12,10 @@ import { PhraseService } from '../services/phrase-service';
   providers: [PhraseService]
 })
 export class HangmanCmp implements OnInit {
-  title: string;
+  title: string = "Hangman Game";
   phrase: string;
 
   constructor(private _phraseService: PhraseService){
-    this.title = "Hangman";
     this.getPhrase();
   }
 
