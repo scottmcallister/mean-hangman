@@ -15,11 +15,24 @@ var HangmanCmp = (function () {
     function HangmanCmp(_phraseService) {
         this._phraseService = _phraseService;
         this.title = "Hangman Game";
+        this.numberWrong = 0;
+        this.numberRight = 0;
+        this.correctGuesses = [];
+        this.wrongGuesses = [];
         this.getPhrase();
     }
     HangmanCmp.prototype.ngOnInit = function () {
         this.getPhrase();
         console.log('init');
+    };
+    HangmanCmp.prototype.onKey = function (keycode) {
+        if (this.isLetter(keycode)) {
+            var letter = String.fromCharCode(keycode).toLowerCase();
+            console.log('key pressed: ' + letter);
+        }
+    };
+    HangmanCmp.prototype.isLetter = function (keycode) {
+        return (keycode >= 65 && keycode <= 90);
     };
     HangmanCmp.prototype.getPhrase = function () {
         var _this = this;
@@ -34,7 +47,8 @@ var HangmanCmp = (function () {
             selector: 'hangman-cmp',
             templateUrl: 'hangman/templates/hangman.html',
             styleUrls: ['hangman/styles/hangman.css'],
-            providers: [phrase_service_1.PhraseService]
+            providers: [phrase_service_1.PhraseService],
+            host: { '(window:keydown)': 'onKey($event.keyCode)' }
         }), 
         __metadata('design:paramtypes', [phrase_service_1.PhraseService])
     ], HangmanCmp);
