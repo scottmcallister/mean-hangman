@@ -23,7 +23,6 @@ var PhraseService = (function () {
     };
     PhraseService.prototype.extractPhrase = function (res) {
         var body = res.json();
-        console.log(body);
         return JSON.stringify(body.phrase);
     };
     PhraseService.prototype.handleError = function (error) {

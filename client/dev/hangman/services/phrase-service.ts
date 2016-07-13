@@ -28,7 +28,6 @@ export class PhraseService {
 
   private extractPhrase(res: Response): String{
     let body = res.json();
-    console.log(body);
     return JSON.stringify(body.phrase);
   }
 

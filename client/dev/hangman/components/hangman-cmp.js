@@ -15,31 +15,45 @@ var HangmanCmp = (function () {
     function HangmanCmp(_phraseService) {
         this._phraseService = _phraseService;
         this.title = "Hangman Game";
+        this.lettersInPhrase = [];
         this.numberWrong = 0;
         this.numberRight = 0;
         this.correctGuesses = [];
         this.wrongGuesses = [];
-        this.getPhrase();
     }
     HangmanCmp.prototype.ngOnInit = function () {
         this.getPhrase();
-        console.log('init');
     };
     HangmanCmp.prototype.onKey = function (keycode) {
         if (this.isLetter(keycode)) {
             var letter = String.fromCharCode(keycode).toLowerCase();
-            console.log('key pressed: ' + letter);
+            this.checkMatch(letter);
         }
     };
     HangmanCmp.prototype.isLetter = function (keycode) {
         return (keycode >= 65 && keycode <= 90);
+    };
+    HangmanCmp.prototype.checkMatch = function (letter) {
+        if (this.lettersInPhrase.indexOf(letter) > -1) {
+            if (this.correctGuesses.indexOf(letter) < 0) {
+                this.correctGuesses.push(letter);
+                this.numberRight++;
+            }
+        }
+        else {
+            if (this.wrongGuesses.indexOf(letter) < 0) {
+                this.wrongGuesses.push(letter);
+                this.numberWrong++;
+            }
+        }
     };
     HangmanCmp.prototype.getPhrase = function () {
         var _this = this;
         this._phraseService
             .getRandom()
             .then(function (phrase) {
-            return _this.phrase = phrase;
+            _this.phrase = phrase;
+            _this.lettersInPhrase = phrase.split('');
         }, function (error) { return console.log(error); });
     };
     HangmanCmp = __decorate([
