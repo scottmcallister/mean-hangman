@@ -13,7 +13,6 @@ import { PhraseService } from '../services/phrase-service';
   host: { '(window:keydown)': 'onKey($event.keyCode)' }
 })
 export class HangmanCmp implements OnInit {
-  title: string = "Hangman Game";
   phrase: string;
   lettersInPhrase: any[] = [];
   numberWrong: number = 0;
@@ -22,11 +21,11 @@ export class HangmanCmp implements OnInit {
   wrongGuesses: any[] = [];
 
   constructor(private _phraseService: PhraseService){
-
+    this.getPhrase();
   }
 
   ngOnInit(){
-    this.getPhrase();
+
   }
 
   onKey(keycode){
@@ -59,9 +58,10 @@ export class HangmanCmp implements OnInit {
     this._phraseService
         .getRandom()
         .then(phrase =>{
-          this.phrase = phrase;
-          this.lettersInPhrase = phrase.split('')},
-          error => console.log(error));
+          this.phrase = phrase.replace(/[/']/g, '');
+          this.lettersInPhrase = phrase.replace(/[^a-z0-9]/gi,'').split('');
+        },
+        error => console.log(error));
     //return "test";
   }
 }

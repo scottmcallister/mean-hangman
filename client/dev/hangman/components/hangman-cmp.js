@@ -14,15 +14,14 @@ var phrase_service_1 = require('../services/phrase-service');
 var HangmanCmp = (function () {
     function HangmanCmp(_phraseService) {
         this._phraseService = _phraseService;
-        this.title = "Hangman Game";
         this.lettersInPhrase = [];
         this.numberWrong = 0;
         this.numberRight = 0;
         this.correctGuesses = [];
         this.wrongGuesses = [];
+        this.getPhrase();
     }
     HangmanCmp.prototype.ngOnInit = function () {
-        this.getPhrase();
     };
     HangmanCmp.prototype.onKey = function (keycode) {
         if (this.isLetter(keycode)) {
@@ -52,8 +51,8 @@ var HangmanCmp = (function () {
         this._phraseService
             .getRandom()
             .then(function (phrase) {
-            _this.phrase = phrase;
-            _this.lettersInPhrase = phrase.split('');
+            _this.phrase = phrase.replace(/[/']/g, '');
+            _this.lettersInPhrase = phrase.replace(/[^a-z0-9]/gi, '').split('');
         }, function (error) { return console.log(error); });
     };
     HangmanCmp = __decorate([
