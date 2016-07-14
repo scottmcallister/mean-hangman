@@ -22,12 +22,11 @@ var HangmanCmp = (function () {
         this.wrongGuesses = [];
         this.getPhrase();
     }
-    HangmanCmp.prototype.ngOnInit = function () {
-    };
     HangmanCmp.prototype.onKey = function (keycode) {
         if (this.isLetter(keycode)) {
             var letter = String.fromCharCode(keycode).toLowerCase();
             this.checkMatch(letter);
+            this.checkGameStatus();
         }
     };
     HangmanCmp.prototype.isLetter = function (keycode) {
@@ -53,6 +52,12 @@ var HangmanCmp = (function () {
         this.numberRight = 0;
         this.correctGuesses = [];
         this.wrongGuesses = [];
+    };
+    HangmanCmp.prototype.checkGameStatus = function () {
+        if (this.numberWrong === 6) {
+            alert("game over!");
+            this.reset();
+        }
     };
     HangmanCmp.prototype.getPhrase = function () {
         var _this = this;

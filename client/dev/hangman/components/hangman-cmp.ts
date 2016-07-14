@@ -1,6 +1,5 @@
 import {
-  Component,
-  OnInit
+  Component
 } from '@angular/core';
 import 'rxjs/Rx'
 import { PhraseService } from '../services/phrase-service';
@@ -14,7 +13,7 @@ import { BodyComponent } from './body-cmp';
   directives: [BodyComponent],
   host: { '(window:keydown)': 'onKey($event.keyCode)' }
 })
-export class HangmanCmp implements OnInit {
+export class HangmanCmp {
   phrase: string;
   lettersInPhrase: any[] = [];
   numberWrong: number = 0;
@@ -26,14 +25,11 @@ export class HangmanCmp implements OnInit {
     this.getPhrase();
   }
 
-  ngOnInit(){
-
-  }
-
   onKey(keycode){
     if(this.isLetter(keycode)){
       let letter = String.fromCharCode(keycode).toLowerCase();
       this.checkMatch(letter);
+      this.checkGameStatus();
     }
   }
 
@@ -62,6 +58,13 @@ export class HangmanCmp implements OnInit {
     this.numberRight = 0;
     this.correctGuesses = [];
     this.wrongGuesses = [];
+  }
+
+  checkGameStatus(){
+    if(this.numberWrong === 6){
+      alert("game over!");
+      this.reset();
+    }
   }
 
   private getPhrase(){
