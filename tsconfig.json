@@ -18,7 +18,6 @@
         "typings/index.d.ts"
     ],
     "files": [
-        "client/dev/hangman/components/body-cmp.ts",
         "client/dev/hangman/components/hangman-cmp.ts",
         "client/dev/hangman/services/phrase-service.ts",
         "client/dev/index.ts",
