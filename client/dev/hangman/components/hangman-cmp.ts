@@ -54,6 +54,14 @@ export class HangmanCmp implements OnInit {
     }
   }
 
+  reset(){
+    this.getPhrase();
+    this.numberWrong = 0;
+    this.numberRight = 0;
+    this.correctGuesses = [];
+    this.wrongGuesses = [];
+  }
+
   private getPhrase(){
     this._phraseService
         .getRandom()

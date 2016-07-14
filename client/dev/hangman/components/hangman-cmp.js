@@ -46,6 +46,13 @@ var HangmanCmp = (function () {
             }
         }
     };
+    HangmanCmp.prototype.reset = function () {
+        this.getPhrase();
+        this.numberWrong = 0;
+        this.numberRight = 0;
+        this.correctGuesses = [];
+        this.wrongGuesses = [];
+    };
     HangmanCmp.prototype.getPhrase = function () {
         var _this = this;
         this._phraseService
