@@ -6,3 +6,6 @@
             [splitPhrase]="splitPhrase">
 </phrase-cmp>
 <button (click)="reset()">New Game</button>
+<p *ngIf="gameStatus === 'lost'">
+  Right answer: {{ phrase }}
+</p>
