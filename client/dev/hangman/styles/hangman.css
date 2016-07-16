@@ -4,6 +4,18 @@ body{
   color: #ffffff;
   text-align: center;
 }
+.body-parts{
+  height:300px;
+  width:300px;
+  background-image:url("/hangman/images/hangman-0.png");
+  margin:auto;
+  position:relative;
+}
+.body-parts img{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 .phrase,
 .guesses{
   list-style-type: none;
