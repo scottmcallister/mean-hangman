@@ -17,6 +17,7 @@ var wrong_guess_cmp_1 = require('./wrong-guess-cmp');
 var HangmanCmp = (function () {
     function HangmanCmp(_phraseService) {
         this._phraseService = _phraseService;
+        this.gameStatus = "playing";
         this.lettersInPhrase = [];
         this.splitPhrase = [];
         this.numberWrong = 0;
@@ -26,7 +27,7 @@ var HangmanCmp = (function () {
         this.getPhrase();
     }
     HangmanCmp.prototype.onKey = function (keycode) {
-        if (this.isLetter(keycode)) {
+        if (this.isLetter(keycode) && this.gameStatus == "playing") {
             var letter = String.fromCharCode(keycode).toLowerCase();
             this.checkMatch(letter);
             this.checkGameStatus();
@@ -56,18 +57,17 @@ var HangmanCmp = (function () {
         this.numberRight = 0;
         this.correctGuesses = [];
         this.wrongGuesses = [];
+        this.gameStatus = "playing";
     };
     HangmanCmp.prototype.checkGameStatus = function () {
         console.log(this.lettersInPhrase);
         console.log("number right:" + this.numberRight);
         console.log("letters in phrase:" + this.lettersInPhrase.length);
         if (this.numberWrong === 6) {
-            alert("you lose!");
-            this.reset();
+            this.gameStatus = "lost";
         }
         if (this.numberRight === this.lettersInPhrase.length) {
-            alert("you win!");
-            this.reset();
+            this.gameStatus = "won";
         }
     };
     HangmanCmp.prototype.getPhrase = function () {

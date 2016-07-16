@@ -12,10 +12,12 @@ export class PhraseComponent {
   @Input() correctGuesses: any[] = [];
   @Input() splitPhrase: any[] = [];
   constructor(){}
+
   isCorrectGuess(letter: string): boolean{
     return (this.correctGuesses.indexOf(letter.toUpperCase()) > -1
             || this.correctGuesses.indexOf(letter.toLowerCase()) > -1);
   }
+
   isSpace(letter: string): boolean{
     return letter === " ";
   }

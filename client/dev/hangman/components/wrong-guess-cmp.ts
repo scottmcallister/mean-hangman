@@ -9,5 +9,6 @@ import {
 })
 export class WrongGuessComponent {
   @Input() wrongGuesses: any[] = [];
+  @Input() gameStatus: string = "playing";
   constructor(){}
 }

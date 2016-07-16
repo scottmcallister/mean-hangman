@@ -1,6 +1,4 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 import 'rxjs/Rx'
 import { PhraseService } from '../services/phrase-service';
 import { BodyComponent } from './body-cmp';
@@ -17,6 +15,7 @@ import { WrongGuessComponent } from './wrong-guess-cmp';
 })
 export class HangmanCmp {
   phrase: string;
+  gameStatus: string = "playing";
   lettersInPhrase: any[] = [];
   splitPhrase: any[] = [];
   numberWrong: number = 0;
@@ -29,7 +28,7 @@ export class HangmanCmp {
   }
 
   onKey(keycode){
-    if(this.isLetter(keycode)){
+    if(this.isLetter(keycode) && this.gameStatus == "playing"){
       let letter = String.fromCharCode(keycode).toLowerCase();
       this.checkMatch(letter);
       this.checkGameStatus();
@@ -62,6 +61,7 @@ export class HangmanCmp {
     this.numberRight = 0;
     this.correctGuesses = [];
     this.wrongGuesses = [];
+    this.gameStatus = "playing";
   }
 
   checkGameStatus(){
@@ -69,12 +69,10 @@ export class HangmanCmp {
     console.log("number right:"+this.numberRight);
     console.log("letters in phrase:"+this.lettersInPhrase.length);
     if(this.numberWrong === 6){
-      alert("you lose!");
-      this.reset();
+      this.gameStatus = "lost";
     }
     if(this.numberRight === this.lettersInPhrase.length){
-      alert("you win!");
-      this.reset();
+      this.gameStatus = "won";
     }
   }
 

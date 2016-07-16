@@ -1,7 +1,10 @@
 <div class="guess-wrapper">
-  <ul class="guesses">
+  <ul *ngIf="gameStatus === 'playing'" class="guesses">
     <li class="letter" *ngFor="let letter of wrongGuesses">
       <span>{{letter}}</span>
     </li>
   </ul>
+  <label *ngIf="gameStatus !== 'playing'" class="game-over">
+    You {{ gameStatus }}!
+  </label>
 </div>

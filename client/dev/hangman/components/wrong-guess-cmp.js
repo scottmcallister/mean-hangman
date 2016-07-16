@@ -12,11 +12,16 @@ var core_1 = require('@angular/core');
 var WrongGuessComponent = (function () {
     function WrongGuessComponent() {
         this.wrongGuesses = [];
+        this.gameStatus = "playing";
     }
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
     ], WrongGuessComponent.prototype, "wrongGuesses", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], WrongGuessComponent.prototype, "gameStatus", void 0);
     WrongGuessComponent = __decorate([
         core_1.Component({
             selector: 'guess-cmp',
