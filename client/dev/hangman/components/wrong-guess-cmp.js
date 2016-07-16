@@ -19,8 +19,8 @@ var WrongGuessComponent = (function () {
     ], WrongGuessComponent.prototype, "wrongGuesses", void 0);
     WrongGuessComponent = __decorate([
         core_1.Component({
-            selector: 'wrong-guess-cmp',
-            templateUrl: 'hangman/templates/wrong-guess.html'
+            selector: 'guess-cmp',
+            templateUrl: 'hangman/templates/guesses.html'
         }), 
         __metadata('design:paramtypes', [])
     ], WrongGuessComponent);

@@ -4,8 +4,8 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'wrong-guess-cmp',
-  templateUrl: 'hangman/templates/wrong-guess.html'
+  selector: 'guess-cmp',
+  templateUrl: 'hangman/templates/guesses.html'
 })
 export class WrongGuessComponent {
   @Input() wrongGuesses: any[] = [];
