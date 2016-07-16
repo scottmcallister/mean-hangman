@@ -9,40 +9,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var WordComponent = (function () {
-    function WordComponent() {
+var PhraseComponent = (function () {
+    function PhraseComponent() {
         this.lettersInPhrase = [];
         this.correctGuesses = [];
         this.splitPhrase = [];
     }
-    WordComponent.prototype.isCorrectGuess = function (letter) {
-        var upperLetter = letter.toUpperCase;
-        return (this.correctGuesses.indexOf(letter) > -1
-            || this.correctGuesses.indexOf(upperLetter) > -1);
+    PhraseComponent.prototype.isCorrectGuess = function (letter) {
+        return (this.correctGuesses.indexOf(letter.toUpperCase()) > -1
+            || this.correctGuesses.indexOf(letter.toLowerCase()) > -1);
     };
-    WordComponent.prototype.isSpace = function (letter) {
+    PhraseComponent.prototype.isSpace = function (letter) {
         return letter === " ";
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
-    ], WordComponent.prototype, "lettersInPhrase", void 0);
+    ], PhraseComponent.prototype, "lettersInPhrase", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
-    ], WordComponent.prototype, "correctGuesses", void 0);
+    ], PhraseComponent.prototype, "correctGuesses", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
-    ], WordComponent.prototype, "splitPhrase", void 0);
-    WordComponent = __decorate([
+    ], PhraseComponent.prototype, "splitPhrase", void 0);
+    PhraseComponent = __decorate([
         core_1.Component({
-            selector: 'word-cmp',
-            templateUrl: 'hangman/templates/word.html'
+            selector: 'phrase-cmp',
+            templateUrl: 'hangman/templates/phrase.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], WordComponent);
-    return WordComponent;
+    ], PhraseComponent);
+    return PhraseComponent;
 }());
-exports.WordComponent = WordComponent;
-//# sourceMappingURL=word-cmp.js.map
+exports.PhraseComponent = PhraseComponent;
+//# sourceMappingURL=phrase-cmp.js.map

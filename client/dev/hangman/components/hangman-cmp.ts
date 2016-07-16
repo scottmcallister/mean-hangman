@@ -4,7 +4,7 @@ import {
 import 'rxjs/Rx'
 import { PhraseService } from '../services/phrase-service';
 import { BodyComponent } from './body-cmp';
-import { WordComponent } from './word-cmp';
+import { PhraseComponent } from './phrase-cmp';
 import { WrongGuessComponent } from './wrong-guess-cmp';
 
 @Component({
@@ -12,7 +12,7 @@ import { WrongGuessComponent } from './wrong-guess-cmp';
   templateUrl: 'hangman/templates/hangman.html',
   styleUrls: ['hangman/styles/hangman.css'],
   providers: [PhraseService],
-  directives: [BodyComponent, WordComponent, WrongGuessComponent],
+  directives: [BodyComponent, PhraseComponent, WrongGuessComponent],
   host: { '(window:keydown)': 'onKey($event.keyCode)' }
 })
 export class HangmanCmp {
@@ -42,6 +42,7 @@ export class HangmanCmp {
   }
 
   checkMatch(letter: string){
+    letter = letter.toLowerCase();
     if(this.lettersInPhrase.indexOf(letter) > -1){
       if(this.correctGuesses.indexOf(letter) < 0){
         this.correctGuesses.push(letter);
@@ -64,8 +65,15 @@ export class HangmanCmp {
   }
 
   checkGameStatus(){
+    console.log(this.lettersInPhrase);
+    console.log("number right:"+this.numberRight);
+    console.log("letters in phrase:"+this.lettersInPhrase.length);
     if(this.numberWrong === 6){
-      alert("game over!");
+      alert("you lose!");
+      this.reset();
+    }
+    if(this.numberRight === this.lettersInPhrase.length){
+      alert("you win!");
       this.reset();
     }
   }
@@ -75,7 +83,13 @@ export class HangmanCmp {
         .getRandom()
         .then(phrase =>{
           this.phrase = phrase.replace(/[/']/g, '');
-          this.lettersInPhrase = phrase.replace(/[^a-z0-9]/gi,'').split('');
+          this.lettersInPhrase =
+            phrase.replace(/[^a-z0-9]/gi,'')
+                  .toLowerCase()
+                  .split('')
+                  .filter((value, index, self) => {
+                     return self.indexOf(value) === index;
+                   });
           let wordsInPhrase = phrase.replace(/[^a-z0-9\s]/gi,'').split(' ');
           this.splitPhrase = [];
           wordsInPhrase.forEach(word => {
@@ -84,6 +98,5 @@ export class HangmanCmp {
           console.log(this.splitPhrase);
         },
         error => console.log(error));
-    //return "test";
   }
 }

@@ -12,7 +12,7 @@ var core_1 = require('@angular/core');
 require('rxjs/Rx');
 var phrase_service_1 = require('../services/phrase-service');
 var body_cmp_1 = require('./body-cmp');
-var word_cmp_1 = require('./word-cmp');
+var phrase_cmp_1 = require('./phrase-cmp');
 var wrong_guess_cmp_1 = require('./wrong-guess-cmp');
 var HangmanCmp = (function () {
     function HangmanCmp(_phraseService) {
@@ -36,6 +36,7 @@ var HangmanCmp = (function () {
         return (keycode >= 65 && keycode <= 90);
     };
     HangmanCmp.prototype.checkMatch = function (letter) {
+        letter = letter.toLowerCase();
         if (this.lettersInPhrase.indexOf(letter) > -1) {
             if (this.correctGuesses.indexOf(letter) < 0) {
                 this.correctGuesses.push(letter);
@@ -57,8 +58,15 @@ var HangmanCmp = (function () {
         this.wrongGuesses = [];
     };
     HangmanCmp.prototype.checkGameStatus = function () {
+        console.log(this.lettersInPhrase);
+        console.log("number right:" + this.numberRight);
+        console.log("letters in phrase:" + this.lettersInPhrase.length);
         if (this.numberWrong === 6) {
-            alert("game over!");
+            alert("you lose!");
+            this.reset();
+        }
+        if (this.numberRight === this.lettersInPhrase.length) {
+            alert("you win!");
             this.reset();
         }
     };
@@ -68,7 +76,13 @@ var HangmanCmp = (function () {
             .getRandom()
             .then(function (phrase) {
             _this.phrase = phrase.replace(/[/']/g, '');
-            _this.lettersInPhrase = phrase.replace(/[^a-z0-9]/gi, '').split('');
+            _this.lettersInPhrase =
+                phrase.replace(/[^a-z0-9]/gi, '')
+                    .toLowerCase()
+                    .split('')
+                    .filter(function (value, index, self) {
+                    return self.indexOf(value) === index;
+                });
             var wordsInPhrase = phrase.replace(/[^a-z0-9\s]/gi, '').split(' ');
             _this.splitPhrase = [];
             wordsInPhrase.forEach(function (word) {
@@ -83,7 +97,7 @@ var HangmanCmp = (function () {
             templateUrl: 'hangman/templates/hangman.html',
             styleUrls: ['hangman/styles/hangman.css'],
             providers: [phrase_service_1.PhraseService],
-            directives: [body_cmp_1.BodyComponent, word_cmp_1.WordComponent, wrong_guess_cmp_1.WrongGuessComponent],
+            directives: [body_cmp_1.BodyComponent, phrase_cmp_1.PhraseComponent, wrong_guess_cmp_1.WrongGuessComponent],
             host: { '(window:keydown)': 'onKey($event.keyCode)' }
         }), 
         __metadata('design:paramtypes', [phrase_service_1.PhraseService])
