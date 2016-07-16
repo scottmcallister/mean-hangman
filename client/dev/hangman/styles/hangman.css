@@ -4,6 +4,27 @@ body{
   color: #ffffff;
   text-align: center;
 }
+.phrase{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.phrase .word{
+  float:left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-left:30px;
+}
+.phrase .letter{
+  width: 40px;
+  height: 40px;
+  border-bottom: 1px solid #ffffff;
+  margin: 5px;
+  float: left;
+}
 
 /* CSS Loader */
 .wrapper {
@@ -83,10 +104,6 @@ body{
 		-ms-animation-direction: reverse;
 		-webkit-animation-direction: reverse;
 		-moz-animation-direction: reverse; }
-
-
-
-
 
 @keyframes cssload-animation1 {
 	0% {	 transform: rotate(0deg); }

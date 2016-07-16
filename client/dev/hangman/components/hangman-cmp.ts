@@ -4,13 +4,15 @@ import {
 import 'rxjs/Rx'
 import { PhraseService } from '../services/phrase-service';
 import { BodyComponent } from './body-cmp';
+import { WordComponent } from './word-cmp';
+import { WrongGuessComponent } from './wrong-guess-cmp';
 
 @Component({
   selector: 'hangman-cmp',
   templateUrl: 'hangman/templates/hangman.html',
   styleUrls: ['hangman/styles/hangman.css'],
   providers: [PhraseService],
-  directives: [BodyComponent],
+  directives: [BodyComponent, WordComponent, WrongGuessComponent],
   host: { '(window:keydown)': 'onKey($event.keyCode)' }
 })
 export class HangmanCmp {
@@ -72,7 +74,11 @@ export class HangmanCmp {
         .getRandom()
         .then(phrase =>{
           this.phrase = phrase.replace(/[/']/g, '');
-          this.lettersInPhrase = phrase.replace(/[^a-z0-9]/gi,'').split('');
+          let wordsInPhrase = phrase.replace(/[^a-z0-9\s]/gi,'').split(' ');
+          wordsInPhrase.forEach(word => {
+            this.lettersInPhrase.push(word.split(''));
+          });
+          console.log(this.lettersInPhrase);
         },
         error => console.log(error));
     //return "test";

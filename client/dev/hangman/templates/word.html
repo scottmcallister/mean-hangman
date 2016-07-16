@@ -1,0 +1,9 @@
+<ul class="phrase">
+  <li *ngFor="let word of lettersInPhrase">
+    <ul class="word">
+      <li class="letter" *ngFor="let letter of word">
+        <span *ngIf="isCorrectGuess(letter)">{{letter}}</span>
+      </li>
+    </ul>
+  </li>
+</ul>

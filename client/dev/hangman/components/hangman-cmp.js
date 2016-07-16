@@ -12,6 +12,8 @@ var core_1 = require('@angular/core');
 require('rxjs/Rx');
 var phrase_service_1 = require('../services/phrase-service');
 var body_cmp_1 = require('./body-cmp');
+var word_cmp_1 = require('./word-cmp');
+var wrong_guess_cmp_1 = require('./wrong-guess-cmp');
 var HangmanCmp = (function () {
     function HangmanCmp(_phraseService) {
         this._phraseService = _phraseService;
@@ -65,7 +67,11 @@ var HangmanCmp = (function () {
             .getRandom()
             .then(function (phrase) {
             _this.phrase = phrase.replace(/[/']/g, '');
-            _this.lettersInPhrase = phrase.replace(/[^a-z0-9]/gi, '').split('');
+            var wordsInPhrase = phrase.replace(/[^a-z0-9\s]/gi, '').split(' ');
+            wordsInPhrase.forEach(function (word) {
+                _this.lettersInPhrase.push(word.split(''));
+            });
+            console.log(_this.lettersInPhrase);
         }, function (error) { return console.log(error); });
     };
     HangmanCmp = __decorate([
@@ -74,7 +80,7 @@ var HangmanCmp = (function () {
             templateUrl: 'hangman/templates/hangman.html',
             styleUrls: ['hangman/styles/hangman.css'],
             providers: [phrase_service_1.PhraseService],
-            directives: [body_cmp_1.BodyComponent],
+            directives: [body_cmp_1.BodyComponent, word_cmp_1.WordComponent, wrong_guess_cmp_1.WrongGuessComponent],
             host: { '(window:keydown)': 'onKey($event.keyCode)' }
         }), 
         __metadata('design:paramtypes', [phrase_service_1.PhraseService])

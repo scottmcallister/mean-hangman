@@ -1,6 +1,8 @@
 <h1>Hangman</h1>
 <body-cmp [numberWrong]="numberWrong"></body-cmp>
 <p>{{ phrase }}</p>
+<word-cmp [correctGuesses]="correctGuesses" [lettersInPhrase]="lettersInPhrase">
+</word-cmp>
 <p>numberRight: {{ numberRight }}</p>
 <p>numberWrong: {{ numberWrong }}</p>
 <button (click)="reset()">Reset</button>
