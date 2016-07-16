@@ -18,6 +18,7 @@ import { WrongGuessComponent } from './wrong-guess-cmp';
 export class HangmanCmp {
   phrase: string;
   lettersInPhrase: any[] = [];
+  splitPhrase: any[] = [];
   numberWrong: number = 0;
   numberRight: number = 0;
   correctGuesses: any[] = [];
@@ -74,11 +75,13 @@ export class HangmanCmp {
         .getRandom()
         .then(phrase =>{
           this.phrase = phrase.replace(/[/']/g, '');
+          this.lettersInPhrase = phrase.replace(/[^a-z0-9]/gi,'').split('');
           let wordsInPhrase = phrase.replace(/[^a-z0-9\s]/gi,'').split(' ');
+          this.splitPhrase = [];
           wordsInPhrase.forEach(word => {
-            this.lettersInPhrase.push(word.split(''));
+            this.splitPhrase.push(word.split(''));
           });
-          console.log(this.lettersInPhrase);
+          console.log(this.splitPhrase);
         },
         error => console.log(error));
     //return "test";

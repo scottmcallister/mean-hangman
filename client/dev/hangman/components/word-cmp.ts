@@ -10,6 +10,7 @@ import {
 export class WordComponent {
   @Input() lettersInPhrase: any[] = [];
   @Input() correctGuesses: any[] = [];
+  @Input() splitPhrase: any[] = [];
   constructor(){}
   isCorrectGuess(letter: string): boolean{
     let upperLetter = letter.toUpperCase;

@@ -13,6 +13,7 @@ var WordComponent = (function () {
     function WordComponent() {
         this.lettersInPhrase = [];
         this.correctGuesses = [];
+        this.splitPhrase = [];
     }
     WordComponent.prototype.isCorrectGuess = function (letter) {
         var upperLetter = letter.toUpperCase;
@@ -30,6 +31,10 @@ var WordComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Array)
     ], WordComponent.prototype, "correctGuesses", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], WordComponent.prototype, "splitPhrase", void 0);
     WordComponent = __decorate([
         core_1.Component({
             selector: 'word-cmp',

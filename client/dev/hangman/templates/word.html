@@ -1,5 +1,5 @@
 <ul class="phrase">
-  <li *ngFor="let word of lettersInPhrase">
+  <li *ngFor="let word of splitPhrase">
     <ul class="word">
       <li class="letter" *ngFor="let letter of word">
         <span *ngIf="isCorrectGuess(letter)">{{letter}}</span>

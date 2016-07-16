@@ -18,6 +18,7 @@ var HangmanCmp = (function () {
     function HangmanCmp(_phraseService) {
         this._phraseService = _phraseService;
         this.lettersInPhrase = [];
+        this.splitPhrase = [];
         this.numberWrong = 0;
         this.numberRight = 0;
         this.correctGuesses = [];
@@ -67,11 +68,13 @@ var HangmanCmp = (function () {
             .getRandom()
             .then(function (phrase) {
             _this.phrase = phrase.replace(/[/']/g, '');
+            _this.lettersInPhrase = phrase.replace(/[^a-z0-9]/gi, '').split('');
             var wordsInPhrase = phrase.replace(/[^a-z0-9\s]/gi, '').split(' ');
+            _this.splitPhrase = [];
             wordsInPhrase.forEach(function (word) {
-                _this.lettersInPhrase.push(word.split(''));
+                _this.splitPhrase.push(word.split(''));
             });
-            console.log(_this.lettersInPhrase);
+            console.log(_this.splitPhrase);
         }, function (error) { return console.log(error); });
     };
     HangmanCmp = __decorate([
