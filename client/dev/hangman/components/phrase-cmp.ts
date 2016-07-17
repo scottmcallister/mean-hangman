@@ -21,4 +21,10 @@ export class PhraseComponent {
   isSpace(letter: string): boolean{
     return letter === " ";
   }
+
+  isAlphanumeric(letter: string): boolean{
+    let alphaNumeric = /^[a-z0-9]/i;
+    return alphaNumeric.test(letter);
+  }
+
 }

@@ -80,7 +80,7 @@ export class HangmanCmp {
     this._phraseService
         .getRandom()
         .then(phrase =>{
-          this.phrase = phrase.replace(/[/']/g, '');
+          this.phrase = phrase;
           this.lettersInPhrase =
             phrase.replace(/[^a-z0-9]/gi,'')
                   .toLowerCase()
@@ -88,12 +88,12 @@ export class HangmanCmp {
                   .filter((value, index, self) => {
                      return self.indexOf(value) === index;
                    });
-          let wordsInPhrase = phrase.replace(/[^a-z0-9\s]/gi,'').split(' ');
+          let wordsInPhrase = phrase.split(' ');
           this.splitPhrase = [];
           wordsInPhrase.forEach(word => {
             this.splitPhrase.push(word.split(''));
           });
-          console.log(this.splitPhrase);
+          //console.log(this.splitPhrase);
         },
         error => console.log(error));
   }

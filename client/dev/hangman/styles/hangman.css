@@ -32,12 +32,13 @@ body{
   overflow: hidden;
   margin-left:30px;
 }
-.letter{
+.letter,
+.word li{
   width: 30px;
   height: 30px;
   margin: 5px;
   float: left;
-  font-size: 25px;
+  font-size: 28px;
   display: inline;
 }
 .phrase .letter{

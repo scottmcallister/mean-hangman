@@ -75,7 +75,7 @@ var HangmanCmp = (function () {
         this._phraseService
             .getRandom()
             .then(function (phrase) {
-            _this.phrase = phrase.replace(/[/']/g, '');
+            _this.phrase = phrase;
             _this.lettersInPhrase =
                 phrase.replace(/[^a-z0-9]/gi, '')
                     .toLowerCase()
@@ -83,12 +83,11 @@ var HangmanCmp = (function () {
                     .filter(function (value, index, self) {
                     return self.indexOf(value) === index;
                 });
-            var wordsInPhrase = phrase.replace(/[^a-z0-9\s]/gi, '').split(' ');
+            var wordsInPhrase = phrase.split(' ');
             _this.splitPhrase = [];
             wordsInPhrase.forEach(function (word) {
                 _this.splitPhrase.push(word.split(''));
             });
-            console.log(_this.splitPhrase);
         }, function (error) { return console.log(error); });
     };
     HangmanCmp = __decorate([

@@ -22,6 +22,10 @@ var PhraseComponent = (function () {
     PhraseComponent.prototype.isSpace = function (letter) {
         return letter === " ";
     };
+    PhraseComponent.prototype.isAlphanumeric = function (letter) {
+        var alphaNumeric = /^[a-z0-9]/i;
+        return alphaNumeric.test(letter);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
