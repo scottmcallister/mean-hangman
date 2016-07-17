@@ -22,7 +22,12 @@ body{
   margin: 0;
   padding: 0;
   overflow: hidden;
-  white-space: nowrap;
+}
+.phrase{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap:wrap;
 }
 .phrase .word{
   float:left;
@@ -31,6 +36,10 @@ body{
   padding: 0;
   overflow: hidden;
   margin-left:30px;
+  white-space: nowrap;
+  display:flex;
+  flex-direction:row;
+  flex-wrap: nowrap;
 }
 .letter,
 .word li{
@@ -43,6 +52,12 @@ body{
 }
 .phrase .letter{
   border-bottom: 1px solid #ffffff;
+}
+
+.phrase-wrapper{
+  text-align: center;
+  width:100%;
+  overflow: hidden;
 }
 
 .guess-wrapper{
