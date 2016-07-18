@@ -3,6 +3,7 @@ var forms_1 = require('@angular/forms');
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
 var http_1 = require('@angular/http');
 var core_1 = require('@angular/core');
+//import {TodoCmp} from './todo/components/todo-cmp';
 var hangman_cmp_1 = require('./hangman/components/hangman-cmp');
 core_1.enableProdMode();
 platform_browser_dynamic_1.bootstrap(hangman_cmp_1.HangmanCmp, [
@@ -10,4 +11,3 @@ platform_browser_dynamic_1.bootstrap(hangman_cmp_1.HangmanCmp, [
     forms_1.disableDeprecatedForms(),
     forms_1.provideForms()
 ]);
-//# sourceMappingURL=index.js.map

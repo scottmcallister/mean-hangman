@@ -32,4 +32,3 @@ var WrongGuessComponent = (function () {
     return WrongGuessComponent;
 }());
 exports.WrongGuessComponent = WrongGuessComponent;
-//# sourceMappingURL=wrong-guess-cmp.js.map

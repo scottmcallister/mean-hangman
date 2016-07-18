@@ -48,4 +48,3 @@ var PhraseComponent = (function () {
     return PhraseComponent;
 }());
 exports.PhraseComponent = PhraseComponent;
-//# sourceMappingURL=phrase-cmp.js.map

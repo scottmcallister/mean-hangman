@@ -34,6 +34,7 @@ var HangmanCmp = (function () {
         }
     };
     HangmanCmp.prototype.isLetter = function (keycode) {
+        // checks if pressed key is a letter
         return (keycode >= 65 && keycode <= 90);
     };
     HangmanCmp.prototype.checkMatch = function (letter) {
@@ -130,4 +131,3 @@ var HangmanCmp = (function () {
     return HangmanCmp;
 }());
 exports.HangmanCmp = HangmanCmp;
-//# sourceMappingURL=hangman-cmp.js.map
