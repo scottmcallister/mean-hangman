@@ -3,7 +3,7 @@ import dbConst from '../constants/db.json';
 
 export default class DBConfig {
     static init() {
-      const URL = (process.env.NODE_ENV === 'production') ? process.env.MONGOHQ_URL
+      const URL = (process.env.NODE_ENV === 'production') ? process.env.MONGOLAB_URI
                                                           : dbConst.localhost;
 
       mongoose.connect(URL);
