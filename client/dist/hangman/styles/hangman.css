@@ -1,0 +1,267 @@
+body{
+  background-color:#2497d7;
+  font-family: 'Gudea', sans-serif;
+  color: #ffffff;
+  text-align: center;
+}
+.body-parts{
+  height:300px;
+  width:300px;
+  background-image:url("/hangman/images/hangman-0.png");
+  margin:auto;
+  position:relative;
+}
+.body-parts img{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.phrase,
+.guesses{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.phrase{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap:wrap;
+}
+.phrase .word{
+  float:left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-left:30px;
+  white-space: nowrap;
+  display:flex;
+  flex-direction:row;
+  flex-wrap: nowrap;
+}
+.letter,
+.word li{
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  float: left;
+  font-size: 28px;
+  display: inline;
+}
+.phrase .letter{
+  border-bottom: 1px solid #ffffff;
+}
+.phrase-wrapper{
+  text-align: center;
+  width:100%;
+  overflow: hidden;
+}
+.guess-wrapper{
+  display:table;
+  margin: 0 auto;
+  height:40px;
+}
+.game-over{
+  font-size: 25px;
+  text-transform: uppercase;
+}
+button{
+  border: 3px solid #ffffff;
+  margin-top:30px;
+  color:#ffffff;
+  cursor: pointer;
+  font-size:20px;
+  padding:10px 20px;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0);
+}
+
+/* guess modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-body{
+  background:#eeeeee;
+  width:400px;
+  height:200px;
+  margin:auto;
+  margin-top:50px;
+  padding:10px
+  text-align:center;
+}
+.modal-body p{
+  padding-top:40px;
+  color:#888888;
+}
+.modal-body input[type="text"]{
+  margin-top:10px;
+  padding:5px;
+  width: 90%;
+}
+.modal-body input[type="submit"]{
+  margin-top:20px;
+  padding:10px;
+  background:rgba(0, 0, 0, 0);
+  color:#888888;
+  font-weight:bold;
+  border:2px solid #888888;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* CSS Loader */
+.wrapper {
+	padding-left: 1em;
+	padding-right: 1em;
+	margin: auto;
+  margin-top:100px;
+	display: block;
+	width: 195px;
+}
+
+.cssload-loader {
+	width: 49px;
+	height: 49px;
+	border-radius: 50%;
+	margin: 3em;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+}
+
+.cssload-loader {
+	width: 49px;
+	height: 49px;
+	border-radius: 50%;
+	margin: 3em;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+}
+.cssload-loader,
+.cssload-loader:before,
+.cssload-loader:after {
+	animation: 1.15s infinite ease-in-out;
+		-o-animation: 1.15s infinite ease-in-out;
+		-ms-animation: 1.15s infinite ease-in-out;
+		-webkit-animation: 1.15s infinite ease-in-out;
+		-moz-animation: 1.15s infinite ease-in-out;
+}
+.cssload-loader:before,
+.cssload-loader:after {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.cssload-loader:before,
+.cssload-loader:after {
+		content: "";
+}
+
+.cssload-loader {
+		animation: cssload-animation1 1.73s infinite linear;
+		-o-animation: cssload-animation1 1.73s infinite linear;
+		-ms-animation: cssload-animation1 1.73s infinite linear;
+		-webkit-animation: cssload-animation1 1.73s infinite linear;
+		-moz-animation: cssload-animation1 1.73s infinite linear;
+}
+.cssload-loader:before,
+.cssload-loader:after {
+		content:"";
+		margin: -24px 0 0 -24px;
+		top: 50%;
+		left: 50%;
+		background-color: rgba(255,255,255,0.86);
+		animation-name: cssload-animation2;
+		-o-animation-name: cssload-animation2;
+		-ms-animation-name: cssload-animation2;
+		-webkit-animation-name: cssload-animation2;
+		-moz-animation-name: cssload-animation2;
+}
+.cssload-loader:after { animation-direction: reverse;
+		-o-animation-direction: reverse;
+		-ms-animation-direction: reverse;
+		-webkit-animation-direction: reverse;
+		-moz-animation-direction: reverse; }
+
+@keyframes cssload-animation1 {
+	0% {	 transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@-o-keyframes cssload-animation1 {
+	0% {	 -o-transform: rotate(0deg); }
+	100% { -o-transform: rotate(360deg); }
+}
+
+@-ms-keyframes cssload-animation1 {
+	0% {	 -ms-transform: rotate(0deg); }
+	100% { -ms-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes cssload-animation1 {
+	0% {	 -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+}
+
+@-moz-keyframes cssload-animation1 {
+	0% {	 -moz-transform: rotate(0deg); }
+	100% { -moz-transform: rotate(360deg); }
+}
+
+@keyframes cssload-animation2 {
+	0%	 { transform: scale(0.2); left:	 0%; }
+	50%	{ transform: scale(1.0); left:	50%; }
+	100% { transform: scale(0.2); left: 100%; }
+}
+
+@-o-keyframes cssload-animation2 {
+	0%	 { -o-transform: scale(0.2); left:	 0%; }
+	50%	{ -o-transform: scale(1.0); left:	50%; }
+	100% { -o-transform: scale(0.2); left: 100%; }
+}
+
+@-ms-keyframes cssload-animation2 {
+	0%	 { -ms-transform: scale(0.2); left:	 0%; }
+	50%	{ -ms-transform: scale(1.0); left:	50%; }
+	100% { -ms-transform: scale(0.2); left: 100%; }
+}
+
+@-webkit-keyframes cssload-animation2 {
+	0%	 { -webkit-transform: scale(0.2); left:	 0%; }
+	50%	{ -webkit-transform: scale(1.0); left:	50%; }
+	100% { -webkit-transform: scale(0.2); left: 100%; }
+}
+
+@-moz-keyframes cssload-animation2 {
+	0%	 { -moz-transform: scale(0.2); left:	 0%; }
+	50%	{ -moz-transform: scale(1.0); left:	50%; }
+	100% { -moz-transform: scale(0.2); left: 100%; }
+}
