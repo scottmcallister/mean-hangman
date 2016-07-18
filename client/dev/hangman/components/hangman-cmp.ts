@@ -65,15 +65,43 @@ export class HangmanCmp {
   }
 
   checkGameStatus(){
-    console.log(this.lettersInPhrase);
-    console.log("number right:"+this.numberRight);
-    console.log("letters in phrase:"+this.lettersInPhrase.length);
     if(this.numberWrong === 6){
       this.gameStatus = "lost";
     }
     if(this.numberRight === this.lettersInPhrase.length){
       this.gameStatus = "won";
     }
+  }
+
+  showModal(){
+    if(this.gameStatus === "playing"){
+      this.gameStatus = "guessing";
+      let modal = document.getElementById('guessModal');
+      modal.style.display = "block";
+      let guessInput = document.getElementById('guess-input');
+      guessInput.focus();
+    }
+  }
+
+  hideModal(event){
+    let modal = document.getElementById('guessModal');
+    let closeBtn = document.getElementsByClassName('close');
+    if(event.target == modal || event.target == closeBtn){
+      modal.style.display = "none";
+      this.gameStatus = "playing";
+    }
+  }
+
+  guessPhrase(event){
+    event.preventDefault();
+    let guess = (<HTMLInputElement>document.getElementById('guess-input')).value;
+    if( guess.replace(/[^a-z0-9\s]/gi,'').toLowerCase() 
+        === this.phrase.replace(/[^a-z0-9\s]/gi,'').toLowerCase()){
+      this.gameStatus = "won";
+    } else{
+      this.gameStatus = "lost"
+    }
+    document.getElementById('guessModal').style.display = 'none';
   }
 
   private getPhrase(){
@@ -93,7 +121,6 @@ export class HangmanCmp {
           wordsInPhrase.forEach(word => {
             this.splitPhrase.push(word.split(''));
           });
-          //console.log(this.splitPhrase);
         },
         error => console.log(error));
   }

@@ -60,15 +60,41 @@ var HangmanCmp = (function () {
         this.gameStatus = "playing";
     };
     HangmanCmp.prototype.checkGameStatus = function () {
-        console.log(this.lettersInPhrase);
-        console.log("number right:" + this.numberRight);
-        console.log("letters in phrase:" + this.lettersInPhrase.length);
         if (this.numberWrong === 6) {
             this.gameStatus = "lost";
         }
         if (this.numberRight === this.lettersInPhrase.length) {
             this.gameStatus = "won";
         }
+    };
+    HangmanCmp.prototype.showModal = function () {
+        if (this.gameStatus === "playing") {
+            this.gameStatus = "guessing";
+            var modal = document.getElementById('guessModal');
+            modal.style.display = "block";
+            var guessInput = document.getElementById('guess-input');
+            guessInput.focus();
+        }
+    };
+    HangmanCmp.prototype.hideModal = function (event) {
+        var modal = document.getElementById('guessModal');
+        var closeBtn = document.getElementsByClassName('close');
+        if (event.target == modal || event.target == closeBtn) {
+            modal.style.display = "none";
+            this.gameStatus = "playing";
+        }
+    };
+    HangmanCmp.prototype.guessPhrase = function (event) {
+        event.preventDefault();
+        var guess = document.getElementById('guess-input').value;
+        if (guess.replace(/[^a-z0-9\s]/gi, '').toLowerCase()
+            === this.phrase.replace(/[^a-z0-9\s]/gi, '').toLowerCase()) {
+            this.gameStatus = "won";
+        }
+        else {
+            this.gameStatus = "lost";
+        }
+        document.getElementById('guessModal').style.display = 'none';
     };
     HangmanCmp.prototype.getPhrase = function () {
         var _this = this;

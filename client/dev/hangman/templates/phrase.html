@@ -1,8 +1,7 @@
-
-  <div class="phrase">
-    <ul class="word" *ngFor="let word of splitPhrase">
-      <li *ngFor="let letter of word" [ngClass]="{letter: isAlphanumeric(letter)}">
-        <span *ngIf="isCorrectGuess(letter) || isAlphanumeric(letter) === false">{{letter}}</span>
-      </li>
-    </ul>
-  </div>
+<div class="phrase">
+  <ul class="word" *ngFor="let word of splitPhrase">
+    <li *ngFor="let letter of word" [ngClass]="{letter: isAlphanumeric(letter)}">
+      <span *ngIf="isCorrectGuess(letter) || isAlphanumeric(letter) === false">{{letter}}</span>
+    </li>
+  </ul>
+</div>

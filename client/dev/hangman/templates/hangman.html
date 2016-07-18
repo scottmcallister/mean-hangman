@@ -6,6 +6,17 @@
             [splitPhrase]="splitPhrase">
 </phrase-cmp>
 <button (click)="reset()">New Game</button>
+<button id="guessBtn" (click)="showModal()">Guess Phrase</button>
 <p *ngIf="gameStatus === 'lost'">
   Right answer: {{ phrase }}
 </p>
+<div id="guessModal" class="modal" (click)="hideModal($event)">
+  <div class="modal-body">
+    <span class="close" (click)="hideModal($event)">x</span>
+    <p>Type in your guess</p>
+    <form class="modal-form" (submit)="guessPhrase($event)">
+      <input type="text" id="guess-input"/>
+      <input type="submit" value="GUESS">
+    </form>
+  </div>
+</div>
