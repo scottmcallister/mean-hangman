@@ -1,6 +1,6 @@
-# hangman
+# mean-hangman
 
-A MEAN stack web app for playing hangman. I'm using Typescript across the entire
+A MEAN stack web app for playing hangman. This app uses Typescript across the entire
 stack and Angular 2 on the front end. The Mongo database has a collection of "phrases"
 containing well known movie quotes.
 
